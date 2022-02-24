@@ -14,7 +14,7 @@ namespace GZipTools.GZipTest
     class GZipTest
     {
         // compressor
-        private static byte[] Compress(byte[] bytes)
+        public static byte[] Compress(byte[] bytes)
         {
             using (MemoryStream ms = new MemoryStream())
             {
@@ -28,7 +28,7 @@ namespace GZipTools.GZipTest
         }
 
         // decompressor
-        private static byte[] Decompress(byte[] bytes)
+        public static byte[] Decompress(byte[] bytes)
         {
             byte[] result;
             using (MemoryStream ms = new MemoryStream())
