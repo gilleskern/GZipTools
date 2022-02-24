@@ -7,14 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GZipTools.GZipTest
+namespace GZipTools
 {
     // Test fromthe following URL:
     // https://www.pcreview.co.uk/threads/gzipstream-giving-message-the-magic-number-in-gzip-header-is-notcorrect.3767313/
-    class GZipTest
+    public class GZipTest
     {
         // compressor
-        public static byte[] Compress(byte[] bytes)
+        public byte[] Compress(byte[] bytes)
         {
             using (MemoryStream ms = new MemoryStream())
             {
@@ -28,7 +28,7 @@ namespace GZipTools.GZipTest
         }
 
         // decompressor
-        public static byte[] Decompress(byte[] bytes)
+        public byte[] Decompress(byte[] bytes)
         {
             byte[] result;
             using (MemoryStream ms = new MemoryStream())
@@ -46,7 +46,7 @@ namespace GZipTools.GZipTest
 
 
         // streaming to byte array
-        private static byte[] ToByteArray(Stream stream)
+        private byte[] ToByteArray(Stream stream)
         {
             int count = 0;
             List<byte> result = new List<byte>();

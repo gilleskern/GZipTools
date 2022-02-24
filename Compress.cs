@@ -11,10 +11,12 @@ namespace GZipTools
     public class Compress
     {
         private readonly IScintillaGateway scintilla;
+        private GZipTest test;
 
         public Compress(IScintillaGateway scintilla)
         {
             this.scintilla = scintilla;
+            test = new GZipTest();
         }
 
         public void GZip()
@@ -24,7 +26,8 @@ namespace GZipTools
             string text = scintilla.GetText(length);
 
             // Compress text
-            string compressedText = CompressString(text);
+            //string compressedText = CompressString(text);
+            string compressedText = Convert.ToBase64String(test.Compress(Encoding.UTF8.GetBytes(text)));
 
             // Delete all text in the document.
             scintilla.ClearAll();
@@ -40,7 +43,8 @@ namespace GZipTools
             string compressedText = scintilla.GetText(length);
 
             // Uncompress text
-            string text = DecompressString(compressedText);
+            //string text = DecompressString(compressedText);
+            string text = Encoding.UTF8.GetString(test.Decompress(Convert.FromBase64String(compressedText)));
 
             // Delete all text in the document.
             scintilla.ClearAll();
