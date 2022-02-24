@@ -10,7 +10,7 @@ This project uses the notepad++ plugin template from https://github.com/kbilsted
 
 Visual Studio: https://visualstudio.microsoft.com/de/
 
-## Plugins using this pluginpack
+## Other plugins using this pluginpack
 
   * https://github.com/kbilsted/NppPluginGuidHelper
   * https://github.com/zkirkland/FirstUpper
