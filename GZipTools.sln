@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GZipTools", "GZipTools.csproj", "{ACDE1B00-F5BE-495B-B1B5-471F26FCE09E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ACDE1B00-F5BE-495B-B1B5-471F26FCE09E}.Debug|x64.ActiveCfg = Debug|x64
+		{ACDE1B00-F5BE-495B-B1B5-471F26FCE09E}.Debug|x64.Build.0 = Debug|x64
+		{ACDE1B00-F5BE-495B-B1B5-471F26FCE09E}.Debug|x86.ActiveCfg = Debug|x86
+		{ACDE1B00-F5BE-495B-B1B5-471F26FCE09E}.Debug|x86.Build.0 = Debug|x86
+		{ACDE1B00-F5BE-495B-B1B5-471F26FCE09E}.Release|x64.ActiveCfg = Release|x64
+		{ACDE1B00-F5BE-495B-B1B5-471F26FCE09E}.Release|x64.Build.0 = Release|x64
+		{ACDE1B00-F5BE-495B-B1B5-471F26FCE09E}.Release|x86.ActiveCfg = Release|x86
+		{ACDE1B00-F5BE-495B-B1B5-471F26FCE09E}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {44D67D74-30EB-4B32-8544-75886F6F0711}
+	EndGlobalSection
+EndGlobal
