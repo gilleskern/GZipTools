@@ -52,9 +52,9 @@ namespace GZipTools
             List<byte> result = new List<byte>();
             try
             {
-                byte[] buffer = new byte[0x20000];
+                byte[] buffer = new byte[0x1];
                 int bytes = 0;
-                while ((bytes = stream.Read(buffer, 0, 0x20000)) > 0)
+                while ((bytes = stream.Read(buffer, 0, 0x1)) > 0)
                 {
                     count += bytes;
                     for (int i = 0; i < bytes; i++)

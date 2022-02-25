@@ -23,11 +23,11 @@ namespace GZipTools
         {
             // Read current document.
             int length = scintilla.GetTextLength();
-            string text = scintilla.GetText(length);
+            string text = scintilla.GetText(length + 1);
 
             // Compress text
-            string compressedText = CompressString(text);
-            //string compressedText = Convert.ToBase64String(test.Compress(Encoding.UTF8.GetBytes(text)));
+            //string compressedText = CompressString(text);
+            string compressedText = Convert.ToBase64String(test.Compress(Encoding.UTF8.GetBytes(text)));
 
             // Delete all text in the document.
             scintilla.ClearAll();
@@ -40,11 +40,11 @@ namespace GZipTools
         {
             // Read current document.
             int length = scintilla.GetTextLength();
-            string compressedText = scintilla.GetText(length);
+            string compressedText = scintilla.GetText(length + 1);
 
             // Uncompress text
-            string text = DecompressString(compressedText);
-            //string text = Encoding.UTF8.GetString(test.Decompress(Convert.FromBase64String(compressedText)));
+            //string text = DecompressString(compressedText);
+            string text = Encoding.UTF8.GetString(test.Decompress(Convert.FromBase64String(compressedText)));
 
             // Delete all text in the document.
             scintilla.ClearAll();
