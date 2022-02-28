@@ -11,46 +11,74 @@ namespace GZipTools
     public class Compress
     {
         private readonly IScintillaGateway scintilla;
-        private GZipTest test;
 
         public Compress(IScintillaGateway scintilla)
         {
             this.scintilla = scintilla;
-            test = new GZipTest();
         }
 
         public void GZip()
         {
-            // Read current document.
-            int length = scintilla.GetTextLength();
-            string text = scintilla.GetText(length + 1);
+            try
+            {
+                // Start undo method
+                scintilla.BeginUndoAction();
 
-            // Compress text
-            //string compressedText = CompressString(text);
-            string compressedText = Convert.ToBase64String(test.Compress(Encoding.UTF8.GetBytes(text)));
+                // Read current document.
+                int length = scintilla.GetTextLength();
+                string text = scintilla.GetText(length + 1);
 
-            // Delete all text in the document.
-            scintilla.ClearAll();
+                // Compress text
+                string compressedText = CompressString(text);
 
-            // Display compressed text
-            scintilla.SetText(compressedText);
+                // Delete all text in the document.
+                scintilla.ClearAll();
+
+                // Display compressed text
+                scintilla.SetText(compressedText);
+            }
+            catch (Exception ex)
+            {
+                string error = ex.Message;
+
+                scintilla.SetText(error);
+            }
+            finally
+            {
+                scintilla.EndUndoAction();
+            }
         }
 
         public void GUnzip()
         {
-            // Read current document.
-            int length = scintilla.GetTextLength();
-            string compressedText = scintilla.GetText(length + 1);
+            try
+            {
+                // Start undo method
+                scintilla.BeginUndoAction();
 
-            // Uncompress text
-            //string text = DecompressString(compressedText);
-            string text = Encoding.UTF8.GetString(test.Decompress(Convert.FromBase64String(compressedText)));
+                // Read current document.
+                int length = scintilla.GetTextLength();
+                string compressedText = scintilla.GetText(length + 1);
 
-            // Delete all text in the document.
-            scintilla.ClearAll();
+                // Uncompress text
+                string text = DecompressString(compressedText);
 
-            // Display compressed text
-            scintilla.SetText(text);
+                // Delete all text in the document.
+                scintilla.ClearAll();
+
+                // Display compressed text
+                scintilla.SetText(text);
+            }
+            catch (Exception ex)
+            {
+                string error = ex.Message;
+
+                scintilla.SetText(error);
+            }
+            finally
+            {
+                scintilla.EndUndoAction();
+            }
         }
 
         /// <summary>
@@ -85,86 +113,21 @@ namespace GZipTools
         /// <returns></returns>
         private string DecompressString(string compressedText)
         {
-            //using GZipStream decoder = new GZipStream(gzStream, CompressionMode.Decompress, true);
-            //MemoryStream decodedStream = new MemoryStream();
-            //decoder.CopyTo(decodedStream);
-            //return decodedStream;
-
-
-            try
+            byte[] gZipBuffer = Convert.FromBase64String(compressedText);
+            using (var memoryStream = new MemoryStream())
             {
-                //byte[] gZipBuffer = Convert.FromBase64String(compressedText);
-                byte[] gZipBuffer = Encoding.UTF8.GetBytes(compressedText);
-                using (var memoryStream = new MemoryStream())
+                int dataLength = BitConverter.ToInt32(gZipBuffer, 0);
+                memoryStream.Write(gZipBuffer, 4, gZipBuffer.Length - 4);
+
+                var buffer = new byte[dataLength];
+
+                memoryStream.Position = 0;
+                using (var gZipStream = new GZipStream(memoryStream, CompressionMode.Decompress))
                 {
-                    int dataLength = BitConverter.ToInt32(gZipBuffer, 0);
-                    memoryStream.Write(gZipBuffer, 4, gZipBuffer.Length - 4);
-
-                    var buffer = new byte[dataLength];
-
-                    memoryStream.Position = 0;
-                    using (var gZipStream = new GZipStream(memoryStream, CompressionMode.Decompress))
-                    {
-                        gZipStream.Read(buffer, 0, buffer.Length);
-                    }
-
-                    return Encoding.UTF8.GetString(buffer);
-                }
-            }
-            catch (Exception ex)
-            {
-                string message = ex.ToString();
-
-                return message;
-            }
-        }
-
-        public static string UnZip(string value)
-        {
-            try
-            {
-                //Transform string into byte[]
-                byte[] byteArray = new byte[value.Length];
-                int indexBA = 0;
-                foreach (char item in value.ToCharArray())
-                {
-                    byteArray[indexBA++] = (byte)item;
+                    gZipStream.Read(buffer, 0, buffer.Length);
                 }
 
-                //Prepare for decompress
-                System.IO.MemoryStream ms = new System.IO.MemoryStream(byteArray);
-                System.IO.Compression.GZipStream sr = new System.IO.Compression.GZipStream(ms,
-                    System.IO.Compression.CompressionMode.Decompress);
-
-                //Reset variable to collect uncompressed result
-                byteArray = new byte[byteArray.Length];
-
-                //Decompress
-                int rByte = sr.Read(byteArray, 0, byteArray.Length);
-
-                //Transform byte[] unzip data to string
-                System.Text.StringBuilder sB = new System.Text.StringBuilder(rByte);
-                //Read the number of bytes GZipStream red and do not a for each bytes in
-                //resultByteArray;
-                for (int i = 0; i < rByte; i++)
-                {
-                    sB.Append((char)byteArray[i]);
-                }
-                sr.Close();
-                ms.Close();
-                sr.Dispose();
-                ms.Dispose();
-                return sB.ToString();
-            }
-            catch (Exception ex)
-            {
-                string message = ex.ToString();
-
-                return message;
-            }
-            finally
-            { 
-            
+                return Encoding.UTF8.GetString(buffer);
             }
         }
     }

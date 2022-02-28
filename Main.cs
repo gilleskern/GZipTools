@@ -28,7 +28,7 @@ namespace Kbg.NppPluginNET
 
         internal static void CommandMenuInit()
         {
-            PluginBase.SetCommand(0, "Compress test", CompressText, new ShortcutKey(false, false, false, Keys.None));
+            PluginBase.SetCommand(0, "Compress text", CompressText, new ShortcutKey(false, false, false, Keys.None));
             PluginBase.SetCommand(1, "Uncompress text", UncompressText, new ShortcutKey(false, false, false, Keys.None));
         }
 
