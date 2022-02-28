@@ -1,12 +1,6 @@
-﻿using System;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.IO;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Windows.Forms;
-using GZipTools;
+﻿using GZipTools;
 using Kbg.NppPluginNET.PluginInfrastructure;
+using System.Windows.Forms;
 
 namespace Kbg.NppPluginNET
 {
