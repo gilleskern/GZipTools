@@ -1,5 +1,6 @@
 ﻿using GZipTools;
 using Kbg.NppPluginNET.PluginInfrastructure;
+using System.Text;
 using System.Windows.Forms;
 
 namespace Kbg.NppPluginNET
@@ -26,6 +27,8 @@ namespace Kbg.NppPluginNET
         {
             PluginBase.SetCommand(0, "Compress text", CompressText, new ShortcutKey(false, false, false, Keys.None));
             PluginBase.SetCommand(1, "Decompress text", UncompressText, new ShortcutKey(false, false, false, Keys.None));
+            PluginBase.SetCommand(2, string.Empty, null); // Add separator
+            PluginBase.SetCommand(3, "&About " + PluginName, ShowAbout, new ShortcutKey(false, false, false, Keys.None));
         }
 
         internal static void SetToolBarIcon()
@@ -46,6 +49,24 @@ namespace Kbg.NppPluginNET
         internal static void UncompressText()
         {
             compress.GUnzip();
+        }
+
+        private static void ShowAbout()
+        {
+            var message = new StringBuilder();
+            message.AppendLine("GZipTools Version: 1.00");
+            message.AppendLine("‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾");
+            message.AppendLine();
+            message.AppendLine("This plugin compress/decompress the content of the current window.");
+            message.AppendLine();
+            message.AppendLine("License: This is freeware (Apache v2.0 license).");
+            message.AppendLine();
+            message.AppendLine("Author: Gilles Kern 2022-");
+            message.AppendLine();
+            message.AppendLine("Website: https://github.com/gilleskern/GZipTools");
+            
+            var title = PluginName;
+            MessageBox.Show(message.ToString(), title, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
     }
