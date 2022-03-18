@@ -8,6 +8,8 @@ namespace Kbg.NppPluginNET
     {
         internal const string PluginName = "GZipTools";
 
+        private static Compress compress = new Compress(new ScintillaGateway(PluginBase.GetCurrentScintilla()));
+
         public static void OnNotification(ScNotification notification)
         {  
             // This method is invoked whenever something is happening in notepad++
@@ -38,12 +40,12 @@ namespace Kbg.NppPluginNET
 
         internal static void CompressText()
         {
-            new Compress(new ScintillaGateway(PluginBase.GetCurrentScintilla())).GZip();
+            compress.GZip();
         }
 
         internal static void UncompressText()
         {
-            new Compress(new ScintillaGateway(PluginBase.GetCurrentScintilla())).GUnzip();
+            compress.GUnzip();
         }
 
     }
