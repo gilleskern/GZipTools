@@ -25,8 +25,8 @@ namespace Kbg.NppPluginNET
 
         internal static void CommandMenuInit()
         {
-            PluginBase.SetCommand(0, "Compress text", CompressText, new ShortcutKey(false, false, false, Keys.None));
-            PluginBase.SetCommand(1, "Decompress text", UncompressText, new ShortcutKey(false, false, false, Keys.None));
+            PluginBase.SetCommand(0, "Compress text", CompressText, new ShortcutKey(true, false, true, Keys.C));
+            PluginBase.SetCommand(1, "Decompress text", UncompressText, new ShortcutKey(true, false, true, Keys.D));
             PluginBase.SetCommand(2, string.Empty, null); // Add separator
             PluginBase.SetCommand(3, "&About " + PluginName, ShowAbout, new ShortcutKey(false, false, false, Keys.None));
         }
