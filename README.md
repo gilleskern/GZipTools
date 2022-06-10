@@ -12,7 +12,7 @@ Visual Studio: https://visualstudio.microsoft.com/de/
 
 ## Versions
 
-1.0.0 - Initial build (Feb 2022)
+1.0.0 - Initial build (Feb 2022)\
 1.0.1 - Add About Dialog (Jun 2022)
 
 ## Other plugins using this pluginpack
