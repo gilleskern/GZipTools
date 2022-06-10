@@ -53,20 +53,27 @@ namespace Kbg.NppPluginNET
 
         private static void ShowAbout()
         {
-            var message = new StringBuilder();
-            message.AppendLine("GZipTools Version: 1.00");
-            message.AppendLine("‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾");
-            message.AppendLine();
-            message.AppendLine("This plugin compress/decompress the content of the current window.");
-            message.AppendLine();
-            message.AppendLine("License: This is freeware (Apache v2.0 license).");
-            message.AppendLine();
-            message.AppendLine("Author: Gilles Kern 2022-");
-            message.AppendLine();
-            message.AppendLine("Website: https://github.com/gilleskern/GZipTools");
-            
-            var title = PluginName;
-            MessageBox.Show(message.ToString(), title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            #region Old version
+            //var message = new StringBuilder();
+            //message.AppendLine("GZipTools Version: 1.00");
+            //message.AppendLine("‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾");
+            //message.AppendLine();
+            //message.AppendLine("This plugin compress/decompress the content of the current window.");
+            //message.AppendLine();
+            //message.AppendLine("License: This is freeware (Apache v2.0 license).");
+            //message.AppendLine();
+            //message.AppendLine("Author: Gilles Kern 2022-");
+            //message.AppendLine();
+            //message.AppendLine("Website: https://github.com/gilleskern/GZipTools");
+
+            //var title = PluginName;
+            //MessageBox.Show(message.ToString(), title, MessageBoxButtons.OK, MessageBoxIcon.Information); 
+            #endregion
+
+            using (AboutDlg about = new AboutDlg())
+            {
+                about.ShowDialog();
+            }
         }
 
     }
