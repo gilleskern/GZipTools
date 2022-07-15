@@ -1,5 +1,7 @@
 ﻿using GZipTools;
 using Kbg.NppPluginNET.PluginInfrastructure;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
 
@@ -28,7 +30,9 @@ namespace Kbg.NppPluginNET
             PluginBase.SetCommand(0, "Compress text", CompressText, new ShortcutKey(true, false, true, Keys.C));
             PluginBase.SetCommand(1, "Decompress text", UncompressText, new ShortcutKey(true, false, true, Keys.D));
             PluginBase.SetCommand(2, string.Empty, null); // Add separator
-            PluginBase.SetCommand(3, "&About " + PluginName, ShowAbout, new ShortcutKey(false, false, false, Keys.None));
+            PluginBase.SetCommand(3, "Settings...", Settings, new ShortcutKey(false, false, false, Keys.None));
+            PluginBase.SetCommand(4, string.Empty, null); // Add separator
+            PluginBase.SetCommand(5, "&About " + PluginName, ShowAbout, new ShortcutKey(false, false, false, Keys.None));
         }
 
         internal static void SetToolBarIcon()
@@ -49,6 +53,18 @@ namespace Kbg.NppPluginNET
         internal static void UncompressText()
         {
             compress.GUnzip();
+        }
+
+        internal static void Settings()
+        {
+            List<string> text = new List<string>()
+            {
+                "one",
+                "two",
+                "three"
+            };
+            var jsonText = JsonConvert.SerializeObject(text, Formatting.Indented);
+            MessageBox.Show(jsonText, "Fody", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private static void ShowAbout()
