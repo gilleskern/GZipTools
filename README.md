@@ -10,6 +10,9 @@ This project uses the notepad++ plugin template from https://github.com/kbilsted
 
 Visual Studio: https://visualstudio.microsoft.com/de/
 
+Dependencies: https://www.manuelmeyer.net/2016/01/net-power-tip-10-merging-assemblies/
+
+
 ## Versions
 
 1.0.0 - Initial build (Feb 2022)\
