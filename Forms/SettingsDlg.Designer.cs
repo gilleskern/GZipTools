@@ -35,11 +35,11 @@ namespace GZipTools.Forms
             this.lblSelectKey = new System.Windows.Forms.Label();
             this.lblKeyID = new System.Windows.Forms.Label();
             this.lblKeyValue = new System.Windows.Forms.Label();
-            this.buttonOK = new System.Windows.Forms.Button();
-            this.buttonCancel = new System.Windows.Forms.Button();
             this.textBoxKeyID = new System.Windows.Forms.TextBox();
             this.comboBoxSelectKey = new System.Windows.Forms.ComboBox();
             this.textBoxKeyValue = new System.Windows.Forms.TextBox();
+            this.buttonOK = new System.Windows.Forms.Button();
+            this.buttonCancel = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.AESPage.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -82,7 +82,7 @@ namespace GZipTools.Forms
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(603, 515);
@@ -112,29 +112,11 @@ namespace GZipTools.Forms
             // 
             this.lblKeyValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblKeyValue.AutoSize = true;
-            this.lblKeyValue.Location = new System.Drawing.Point(3, 108);
+            this.lblKeyValue.Location = new System.Drawing.Point(3, 123);
             this.lblKeyValue.Name = "lblKeyValue";
             this.lblKeyValue.Size = new System.Drawing.Size(55, 13);
             this.lblKeyValue.TabIndex = 2;
             this.lblKeyValue.Text = "Key Value";
-            // 
-            // buttonOK
-            // 
-            this.buttonOK.Location = new System.Drawing.Point(458, 571);
-            this.buttonOK.Name = "buttonOK";
-            this.buttonOK.Size = new System.Drawing.Size(75, 23);
-            this.buttonOK.TabIndex = 1;
-            this.buttonOK.Text = "OK";
-            this.buttonOK.UseVisualStyleBackColor = true;
-            // 
-            // buttonCancel
-            // 
-            this.buttonCancel.Location = new System.Drawing.Point(546, 571);
-            this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
-            this.buttonCancel.TabIndex = 2;
-            this.buttonCancel.Text = "Cancel";
-            this.buttonCancel.UseVisualStyleBackColor = true;
             // 
             // textBoxKeyID
             // 
@@ -156,10 +138,29 @@ namespace GZipTools.Forms
             // textBoxKeyValue
             // 
             this.textBoxKeyValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBoxKeyValue.Location = new System.Drawing.Point(92, 105);
+            this.textBoxKeyValue.Location = new System.Drawing.Point(92, 103);
+            this.textBoxKeyValue.Multiline = true;
             this.textBoxKeyValue.Name = "textBoxKeyValue";
-            this.textBoxKeyValue.Size = new System.Drawing.Size(487, 20);
+            this.textBoxKeyValue.Size = new System.Drawing.Size(487, 54);
             this.textBoxKeyValue.TabIndex = 5;
+            // 
+            // buttonOK
+            // 
+            this.buttonOK.Location = new System.Drawing.Point(458, 571);
+            this.buttonOK.Name = "buttonOK";
+            this.buttonOK.Size = new System.Drawing.Size(75, 23);
+            this.buttonOK.TabIndex = 1;
+            this.buttonOK.Text = "OK";
+            this.buttonOK.UseVisualStyleBackColor = true;
+            // 
+            // buttonCancel
+            // 
+            this.buttonCancel.Location = new System.Drawing.Point(546, 571);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
+            this.buttonCancel.TabIndex = 2;
+            this.buttonCancel.Text = "Cancel";
+            this.buttonCancel.UseVisualStyleBackColor = true;
             // 
             // SettingsDlg
             // 
