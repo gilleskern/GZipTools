@@ -32,11 +32,11 @@ namespace GZipTools.Forms
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.AESPage = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblSelectKey = new System.Windows.Forms.Label();
+            this.lblKeyID = new System.Windows.Forms.Label();
+            this.lblKeyValue = new System.Windows.Forms.Label();
             this.buttonOK = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
-            this.lblSelectKey = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.AESPage.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -68,8 +68,8 @@ namespace GZipTools.Forms
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.lblSelectKey, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label2, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.lblKeyID, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.lblKeyValue, 0, 3);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 6);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 6;
@@ -81,6 +81,33 @@ namespace GZipTools.Forms
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(603, 515);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // lblSelectKey
+            // 
+            this.lblSelectKey.AutoSize = true;
+            this.lblSelectKey.Location = new System.Drawing.Point(3, 40);
+            this.lblSelectKey.Name = "lblSelectKey";
+            this.lblSelectKey.Size = new System.Drawing.Size(58, 13);
+            this.lblSelectKey.TabIndex = 0;
+            this.lblSelectKey.Text = "Select Key";
+            // 
+            // lblKeyID
+            // 
+            this.lblKeyID.AutoSize = true;
+            this.lblKeyID.Location = new System.Drawing.Point(3, 70);
+            this.lblKeyID.Name = "lblKeyID";
+            this.lblKeyID.Size = new System.Drawing.Size(39, 13);
+            this.lblKeyID.TabIndex = 1;
+            this.lblKeyID.Text = "Key ID";
+            // 
+            // lblKeyValue
+            // 
+            this.lblKeyValue.AutoSize = true;
+            this.lblKeyValue.Location = new System.Drawing.Point(3, 100);
+            this.lblKeyValue.Name = "lblKeyValue";
+            this.lblKeyValue.Size = new System.Drawing.Size(55, 13);
+            this.lblKeyValue.TabIndex = 2;
+            this.lblKeyValue.Text = "Key Value";
             // 
             // buttonOK
             // 
@@ -99,33 +126,6 @@ namespace GZipTools.Forms
             this.buttonCancel.TabIndex = 2;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
-            // 
-            // lblSelectKey
-            // 
-            this.lblSelectKey.AutoSize = true;
-            this.lblSelectKey.Location = new System.Drawing.Point(3, 40);
-            this.lblSelectKey.Name = "lblSelectKey";
-            this.lblSelectKey.Size = new System.Drawing.Size(57, 13);
-            this.lblSelectKey.TabIndex = 0;
-            this.lblSelectKey.Text = "Select key";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 70);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "label2";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 100);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "label3";
             // 
             // SettingsDlg
             // 
@@ -154,7 +154,7 @@ namespace GZipTools.Forms
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label lblSelectKey;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblKeyID;
+        private System.Windows.Forms.Label lblKeyValue;
     }
 }
