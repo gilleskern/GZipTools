@@ -10,6 +10,7 @@ namespace Kbg.NppPluginNET
         internal const string PluginName = "GZipTools";
 
         private static Compress compress = new Compress(new ScintillaGateway(PluginBase.GetCurrentScintilla()));
+        private static EncryptAES encryptAES = new EncryptAES(new ScintillaGateway(PluginBase.GetCurrentScintilla()));
 
         public static void OnNotification(ScNotification notification)
         {  
@@ -28,9 +29,12 @@ namespace Kbg.NppPluginNET
             PluginBase.SetCommand(0, "Compress text", CompressText, new ShortcutKey(true, false, true, Keys.C));
             PluginBase.SetCommand(1, "Decompress text", UncompressText, new ShortcutKey(true, false, true, Keys.D));
             PluginBase.SetCommand(2, string.Empty, null); // Add separator
-            PluginBase.SetCommand(3, "Settings...", Settings, new ShortcutKey(false, false, false, Keys.None));
-            PluginBase.SetCommand(4, string.Empty, null); // Add separator
-            PluginBase.SetCommand(5, "&About " + PluginName, ShowAbout, new ShortcutKey(false, false, false, Keys.None));
+            PluginBase.SetCommand(3, "Encrypt text", EncryptText, new ShortcutKey(false, false, false, Keys.None));
+            PluginBase.SetCommand(4, "Decrypt text", DecryptText, new ShortcutKey(false, false, false, Keys.None));
+            PluginBase.SetCommand(5, string.Empty, null); // Add separator
+            PluginBase.SetCommand(6, "Settings...", Settings, new ShortcutKey(false, false, false, Keys.None));
+            PluginBase.SetCommand(7, string.Empty, null); // Add separator
+            PluginBase.SetCommand(8, "&About " + PluginName, ShowAbout, new ShortcutKey(false, false, false, Keys.None));
         }
 
         internal static void SetToolBarIcon()
@@ -51,6 +55,16 @@ namespace Kbg.NppPluginNET
         internal static void UncompressText()
         {
             compress.GUnzip();
+        }
+
+        internal static void EncryptText()
+        {
+            encryptAES.Encrypt();
+        }
+
+        internal static void DecryptText()
+        {
+            encryptAES.Decrypt();
         }
 
         internal static void Settings()
