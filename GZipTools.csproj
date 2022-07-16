@@ -89,6 +89,7 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Data" />
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Diagnostics.DiagnosticSource.4.3.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
@@ -211,6 +212,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Compress.cs" />
+    <Compile Include="Forms\SettingsDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SettingsDlg.Designer.cs">
+      <DependentUpon>SettingsDlg.cs</DependentUpon>
+    </Compile>
     <Compile Include="PluginInfrastructure\ClikeStringArray.cs" />
     <Compile Include="PluginInfrastructure\DllExport\DllExportAttribute.cs" />
     <Compile Include="Forms\AboutDlg.cs">
@@ -244,6 +251,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Forms\AboutDlg.resx">
       <DependentUpon>AboutDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SettingsDlg.resx">
+      <DependentUpon>SettingsDlg.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
