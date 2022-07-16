@@ -1,8 +1,6 @@
 ﻿using GZipTools;
+using GZipTools.Forms;
 using Kbg.NppPluginNET.PluginInfrastructure;
-using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Kbg.NppPluginNET
@@ -57,14 +55,19 @@ namespace Kbg.NppPluginNET
 
         internal static void Settings()
         {
-            List<string> text = new List<string>()
+            //List<string> text = new List<string>()
+            //{
+            //    "one",
+            //    "two",
+            //    "three"
+            //};
+            //var jsonText = JsonConvert.SerializeObject(text, Formatting.Indented);
+            //MessageBox.Show(jsonText, "Fody", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            using (SettingsDlg settings = new SettingsDlg())
             {
-                "one",
-                "two",
-                "three"
-            };
-            var jsonText = JsonConvert.SerializeObject(text, Formatting.Indented);
-            MessageBox.Show(jsonText, "Fody", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                settings.ShowDialog();
+            }
         }
 
         private static void ShowAbout()

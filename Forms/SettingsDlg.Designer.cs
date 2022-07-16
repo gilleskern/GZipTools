@@ -37,6 +37,9 @@ namespace GZipTools.Forms
             this.lblKeyValue = new System.Windows.Forms.Label();
             this.buttonOK = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
+            this.textBoxKeyID = new System.Windows.Forms.TextBox();
+            this.comboBoxSelectKey = new System.Windows.Forms.ComboBox();
+            this.textBoxKeyValue = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.AESPage.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -65,11 +68,14 @@ namespace GZipTools.Forms
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.75954F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 85.24046F));
             this.tableLayoutPanel1.Controls.Add(this.lblSelectKey, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.lblKeyID, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.lblKeyValue, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.textBoxKeyID, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.comboBoxSelectKey, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.textBoxKeyValue, 1, 3);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 6);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 6;
@@ -84,8 +90,9 @@ namespace GZipTools.Forms
             // 
             // lblSelectKey
             // 
+            this.lblSelectKey.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblSelectKey.AutoSize = true;
-            this.lblSelectKey.Location = new System.Drawing.Point(3, 40);
+            this.lblSelectKey.Location = new System.Drawing.Point(3, 48);
             this.lblSelectKey.Name = "lblSelectKey";
             this.lblSelectKey.Size = new System.Drawing.Size(58, 13);
             this.lblSelectKey.TabIndex = 0;
@@ -93,8 +100,9 @@ namespace GZipTools.Forms
             // 
             // lblKeyID
             // 
+            this.lblKeyID.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblKeyID.AutoSize = true;
-            this.lblKeyID.Location = new System.Drawing.Point(3, 70);
+            this.lblKeyID.Location = new System.Drawing.Point(3, 78);
             this.lblKeyID.Name = "lblKeyID";
             this.lblKeyID.Size = new System.Drawing.Size(39, 13);
             this.lblKeyID.TabIndex = 1;
@@ -102,8 +110,9 @@ namespace GZipTools.Forms
             // 
             // lblKeyValue
             // 
+            this.lblKeyValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblKeyValue.AutoSize = true;
-            this.lblKeyValue.Location = new System.Drawing.Point(3, 100);
+            this.lblKeyValue.Location = new System.Drawing.Point(3, 108);
             this.lblKeyValue.Name = "lblKeyValue";
             this.lblKeyValue.Size = new System.Drawing.Size(55, 13);
             this.lblKeyValue.TabIndex = 2;
@@ -127,6 +136,31 @@ namespace GZipTools.Forms
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
             // 
+            // textBoxKeyID
+            // 
+            this.textBoxKeyID.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.textBoxKeyID.Location = new System.Drawing.Point(92, 75);
+            this.textBoxKeyID.Name = "textBoxKeyID";
+            this.textBoxKeyID.Size = new System.Drawing.Size(281, 20);
+            this.textBoxKeyID.TabIndex = 3;
+            // 
+            // comboBoxSelectKey
+            // 
+            this.comboBoxSelectKey.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.comboBoxSelectKey.FormattingEnabled = true;
+            this.comboBoxSelectKey.Location = new System.Drawing.Point(92, 44);
+            this.comboBoxSelectKey.Name = "comboBoxSelectKey";
+            this.comboBoxSelectKey.Size = new System.Drawing.Size(281, 21);
+            this.comboBoxSelectKey.TabIndex = 4;
+            // 
+            // textBoxKeyValue
+            // 
+            this.textBoxKeyValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.textBoxKeyValue.Location = new System.Drawing.Point(92, 105);
+            this.textBoxKeyValue.Name = "textBoxKeyValue";
+            this.textBoxKeyValue.Size = new System.Drawing.Size(487, 20);
+            this.textBoxKeyValue.TabIndex = 5;
+            // 
             // SettingsDlg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -135,7 +169,12 @@ namespace GZipTools.Forms
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.tabControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "SettingsDlg";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Settings";
             this.tabControl1.ResumeLayout(false);
@@ -156,5 +195,8 @@ namespace GZipTools.Forms
         private System.Windows.Forms.Label lblSelectKey;
         private System.Windows.Forms.Label lblKeyID;
         private System.Windows.Forms.Label lblKeyValue;
+        private System.Windows.Forms.TextBox textBoxKeyID;
+        private System.Windows.Forms.ComboBox comboBoxSelectKey;
+        private System.Windows.Forms.TextBox textBoxKeyValue;
     }
 }
