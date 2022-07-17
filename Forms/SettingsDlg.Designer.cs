@@ -40,9 +40,15 @@ namespace GZipTools.Forms
             this.textBoxKeyValue = new System.Windows.Forms.TextBox();
             this.buttonOK = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnGenerate = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.AESPage.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -76,6 +82,8 @@ namespace GZipTools.Forms
             this.tableLayoutPanel1.Controls.Add(this.textBoxKeyID, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.comboBoxSelectKey, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.textBoxKeyValue, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.lblTitle, 0, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 6);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 6;
@@ -162,6 +170,57 @@ namespace GZipTools.Forms
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnDelete);
+            this.panel1.Controls.Add(this.btnAdd);
+            this.panel1.Controls.Add(this.btnGenerate);
+            this.panel1.Location = new System.Drawing.Point(92, 163);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(508, 34);
+            this.panel1.TabIndex = 6;
+            // 
+            // btnGenerate
+            // 
+            this.btnGenerate.Location = new System.Drawing.Point(0, 3);
+            this.btnGenerate.Name = "btnGenerate";
+            this.btnGenerate.Size = new System.Drawing.Size(105, 23);
+            this.btnGenerate.TabIndex = 0;
+            this.btnGenerate.Text = "Generate Key";
+            this.btnGenerate.UseVisualStyleBackColor = true;
+            this.btnGenerate.Click += new System.EventHandler(this.btnGenerate_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(111, 3);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(105, 23);
+            this.btnAdd.TabIndex = 1;
+            this.btnAdd.Text = "Add/Update Key";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(222, 3);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(105, 23);
+            this.btnDelete.TabIndex = 2;
+            this.btnDelete.Text = "Delete Key";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblTitle.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.lblTitle, 2);
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Location = new System.Drawing.Point(249, 6);
+            this.lblTitle.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(105, 20);
+            this.lblTitle.TabIndex = 7;
+            this.lblTitle.Text = "Manage Keys";
+            // 
             // SettingsDlg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -182,6 +241,7 @@ namespace GZipTools.Forms
             this.AESPage.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -199,5 +259,10 @@ namespace GZipTools.Forms
         private System.Windows.Forms.TextBox textBoxKeyID;
         private System.Windows.Forms.ComboBox comboBoxSelectKey;
         private System.Windows.Forms.TextBox textBoxKeyValue;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnGenerate;
+        private System.Windows.Forms.Label lblTitle;
     }
 }

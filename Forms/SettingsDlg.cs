@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GZipTools.Forms
@@ -15,6 +10,17 @@ namespace GZipTools.Forms
         public SettingsDlg()
         {
             InitializeComponent();
+
+            // To Do: Load settings from file
+        }
+
+        private void btnGenerate_Click(object sender, EventArgs e)
+        {
+            // Create a key by hashing the current date & time
+            string dtHash = DateTime.Now.Ticks.ToString();
+
+            HashAlgorithm hash = SHA512.Create();
+            textBoxKeyValue.Text = Convert.ToBase64String(hash.ComputeHash(Encoding.UTF8.GetBytes(dtHash)));
         }
     }
 }
