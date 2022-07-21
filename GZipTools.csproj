@@ -219,6 +219,9 @@
     <Compile Include="Forms\SettingsDlg.Designer.cs">
       <DependentUpon>SettingsDlg.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helper\Constants.cs" />
+    <Compile Include="Helper\Settings.cs" />
+    <Compile Include="Model\Settings.cs" />
     <Compile Include="PluginInfrastructure\ClikeStringArray.cs" />
     <Compile Include="PluginInfrastructure\DllExport\DllExportAttribute.cs" />
     <Compile Include="Forms\AboutDlg.cs">
