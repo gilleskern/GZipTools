@@ -16,11 +16,9 @@ namespace GZipTools.Forms
 
         private void btnGenerate_Click(object sender, EventArgs e)
         {
-            // Create a key by hashing the current date & time
-            string dtHash = DateTime.Now.Ticks.ToString();
-
-            HashAlgorithm hash = SHA512.Create();
-            textBoxKeyValue.Text = Convert.ToBase64String(hash.ComputeHash(Encoding.UTF8.GetBytes(dtHash)));
+            // Create a new key
+            var key = Aes.Create().Key;
+            textBoxKeyValue.Text = Convert.ToBase64String(key);
         }
     }
 }
