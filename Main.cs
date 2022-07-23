@@ -78,7 +78,7 @@ namespace Kbg.NppPluginNET
             //var jsonText = JsonConvert.SerializeObject(text, Formatting.Indented);
             //MessageBox.Show(jsonText, "Fody", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            using (SettingsDlg settings = new SettingsDlg())
+            using (SettingsDlg settings = new SettingsDlg(null))
             {
                 settings.ShowDialog();
             }

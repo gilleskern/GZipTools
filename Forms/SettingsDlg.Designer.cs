@@ -170,6 +170,7 @@ namespace GZipTools.Forms
             this.btnDelete.TabIndex = 2;
             this.btnDelete.Text = "Delete Key";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnAdd
             // 
@@ -179,6 +180,7 @@ namespace GZipTools.Forms
             this.btnAdd.TabIndex = 1;
             this.btnAdd.Text = "Add/Update Key";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnGenerate
             // 
