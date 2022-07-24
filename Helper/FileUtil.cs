@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using Kbg.NppPluginNET.PluginInfrastructure;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,6 +21,24 @@ namespace GZipTools.Helper
                 }
                 return stringBuilder.ToString();
             }
+        }
+
+        private static string _configFilePath = string.Empty;
+
+        public static string GetConfigFilePath()
+        {
+            if (string.IsNullOrEmpty(_configFilePath))
+            {
+                StringBuilder sbIniFilePath = new StringBuilder(Win32.MAX_PATH);
+                Win32.SendMessage(PluginBase.nppData._nppHandle, (uint)NppMsg.NPPM_GETPLUGINSCONFIGDIR, Win32.MAX_PATH, sbIniFilePath);
+                string iniFilePath = sbIniFilePath.ToString();
+
+                if (!Directory.Exists(iniFilePath)) Directory.CreateDirectory(iniFilePath);
+
+                _configFilePath = Path.Combine(iniFilePath, Constants.Plugin.Name + ".json");
+            }
+
+            return _configFilePath;
         }
     }
 }

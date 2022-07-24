@@ -12,7 +12,7 @@ namespace GZipTools.Helper
     {
         public static async Task<Model.Settings> ReadAsync()
         {
-            string fileName = Constants.Settings.FileName;
+            string fileName = FileUtil.GetConfigFilePath();
 
             // Check file exist
             if (File.Exists(fileName))
@@ -27,7 +27,7 @@ namespace GZipTools.Helper
 
         public static Model.Settings Read()
         {
-            string fileName = Constants.Settings.FileName;
+            string fileName = FileUtil.GetConfigFilePath();
 
             // Check file exist
             if (File.Exists(fileName))
@@ -42,14 +42,9 @@ namespace GZipTools.Helper
 
         public static void Write(Model.Settings settings)
         {
-            string fileName = Constants.Settings.FileName;
-
-            // Check file exist
-            if (File.Exists(fileName))
-            {
-                string jsonText = JsonConvert.SerializeObject(settings);
-                File.WriteAllText(fileName, jsonText);
-            }
+            string fileName = FileUtil.GetConfigFilePath();
+            string jsonText = JsonConvert.SerializeObject(settings);
+            File.WriteAllText(fileName, jsonText);
         }
     }
 }

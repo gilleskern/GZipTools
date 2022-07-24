@@ -137,11 +137,14 @@ namespace GZipTools.Forms
             // comboBoxSelectKey
             // 
             this.comboBoxSelectKey.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.comboBoxSelectKey.DisplayMember = "Name";
             this.comboBoxSelectKey.FormattingEnabled = true;
             this.comboBoxSelectKey.Location = new System.Drawing.Point(92, 44);
             this.comboBoxSelectKey.Name = "comboBoxSelectKey";
             this.comboBoxSelectKey.Size = new System.Drawing.Size(327, 21);
             this.comboBoxSelectKey.TabIndex = 4;
+            this.comboBoxSelectKey.ValueMember = "Value";
+            this.comboBoxSelectKey.SelectedIndexChanged += new System.EventHandler(this.comboBoxSelectKey_SelectedIndexChanged);
             // 
             // textBoxKeyValue
             // 
@@ -213,6 +216,7 @@ namespace GZipTools.Forms
             this.buttonOK.TabIndex = 1;
             this.buttonOK.Text = "OK";
             this.buttonOK.UseVisualStyleBackColor = true;
+            this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
             // 
             // buttonCancel
             // 
@@ -222,6 +226,7 @@ namespace GZipTools.Forms
             this.buttonCancel.TabIndex = 2;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // SettingsDlg
             // 

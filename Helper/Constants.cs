@@ -8,9 +8,9 @@ namespace GZipTools.Helper
 {
     public struct Constants
     {
-        public struct Settings
+        public struct Plugin
         {
-            public const string FileName = "Settings.json";
+            public const string Name = "GZipTools";
         }
     }
 }

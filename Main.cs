@@ -1,5 +1,7 @@
 ﻿using GZipTools;
 using GZipTools.Forms;
+using Model = GZipTools.Model;
+using Helper = GZipTools.Helper;
 using Kbg.NppPluginNET.PluginInfrastructure;
 using System.Windows.Forms;
 
@@ -7,10 +9,23 @@ namespace Kbg.NppPluginNET
 {
     class Main
     {
-        internal const string PluginName = "GZipTools";
+        internal const string PluginName = Helper.Constants.Plugin.Name;
 
         private static Compress compress = new Compress(new ScintillaGateway(PluginBase.GetCurrentScintilla()));
         private static EncryptAES encryptAES = new EncryptAES(new ScintillaGateway(PluginBase.GetCurrentScintilla()));
+        private static Model.Settings _settings = null;
+        private static Model.Settings settings
+        {
+            get
+            {
+                if (_settings == null)
+                {
+                    _settings = Helper.Settings.Read();
+                }
+
+                return _settings;
+            }
+        }
 
         public static void OnNotification(ScNotification notification)
         {  
@@ -69,18 +84,9 @@ namespace Kbg.NppPluginNET
 
         internal static void Settings()
         {
-            //List<string> text = new List<string>()
-            //{
-            //    "one",
-            //    "two",
-            //    "three"
-            //};
-            //var jsonText = JsonConvert.SerializeObject(text, Formatting.Indented);
-            //MessageBox.Show(jsonText, "Fody", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            using (SettingsDlg settings = new SettingsDlg(null))
+            using (SettingsDlg settingsDlg = new SettingsDlg(settings))
             {
-                settings.ShowDialog();
+                settingsDlg.ShowDialog();
             }
         }
 
