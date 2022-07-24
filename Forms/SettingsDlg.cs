@@ -39,7 +39,7 @@ namespace GZipTools.Forms
 
             // To Do: Initialise controls
             comboBoxSelectKey.Items.AddRange(_settings.AES.Keys.ToArray());
-            comboBoxSelectKey.SelectedItem = _settings.AES.SelectedKey;
+            comboBoxSelectKey.SelectedItem = _settings.AES.Keys.FirstOrDefault(k => k.Name == _settings.AES.SelectedKey.Name);
 
             if (_settings.AES.SelectedKey != null)
             {
