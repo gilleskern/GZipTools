@@ -18,12 +18,12 @@ namespace GZipTools.Forms
             }
         }
 
-        public SettingsDlg(Model.Settings settings)
+        public SettingsDlg()
         {
             InitializeComponent();
 
             // Load settings
-            _settings = settings;
+            _settings = Helper.Settings.Read();
 
             if (_settings == null)
             {

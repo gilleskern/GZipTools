@@ -14,7 +14,7 @@ namespace Kbg.NppPluginNET
         private static Compress compress = new Compress(new ScintillaGateway(PluginBase.GetCurrentScintilla()));
         private static EncryptAES encryptAES = new EncryptAES(new ScintillaGateway(PluginBase.GetCurrentScintilla()));
         private static Model.Settings _settings = null;
-        private static Model.Settings settings
+        private static Model.Settings Settings
         {
             get
             {
@@ -24,6 +24,11 @@ namespace Kbg.NppPluginNET
                 }
 
                 return _settings;
+            }
+
+            set
+            {
+                _settings = value;
             }
         }
 
@@ -41,15 +46,15 @@ namespace Kbg.NppPluginNET
 
         internal static void CommandMenuInit()
         {
-            PluginBase.SetCommand(0, "Compress text", CompressText, new ShortcutKey(true, false, true, Keys.C));
-            PluginBase.SetCommand(1, "Decompress text", UncompressText, new ShortcutKey(true, false, true, Keys.D));
+            PluginBase.SetCommand(0, "Compress text", CompressTextMenu, new ShortcutKey(true, false, true, Keys.C));
+            PluginBase.SetCommand(1, "Decompress text", UncompressTextMenu, new ShortcutKey(true, false, true, Keys.D));
             PluginBase.SetCommand(2, string.Empty, null); // Add separator
-            PluginBase.SetCommand(3, "Encrypt text", EncryptText, new ShortcutKey(false, false, false, Keys.None));
-            PluginBase.SetCommand(4, "Decrypt text", DecryptText, new ShortcutKey(false, false, false, Keys.None));
+            PluginBase.SetCommand(3, "Encrypt text", EncryptTextMenu, new ShortcutKey(false, false, false, Keys.None));
+            PluginBase.SetCommand(4, "Decrypt text", DecryptTextMenu, new ShortcutKey(false, false, false, Keys.None));
             PluginBase.SetCommand(5, string.Empty, null); // Add separator
-            PluginBase.SetCommand(6, "Settings...", Settings, new ShortcutKey(false, false, false, Keys.None));
+            PluginBase.SetCommand(6, "Settings...", SettingsMenu, new ShortcutKey(false, false, false, Keys.None));
             PluginBase.SetCommand(7, string.Empty, null); // Add separator
-            PluginBase.SetCommand(8, "&About " + PluginName, ShowAbout, new ShortcutKey(false, false, false, Keys.None));
+            PluginBase.SetCommand(8, "&About " + PluginName, ShowAboutMenu, new ShortcutKey(false, false, false, Keys.None));
         }
 
         internal static void SetToolBarIcon()
@@ -62,35 +67,40 @@ namespace Kbg.NppPluginNET
 
         }
 
-        internal static void CompressText()
+        internal static void CompressTextMenu()
         {
             compress.GZip();
         }
 
-        internal static void UncompressText()
+        internal static void UncompressTextMenu()
         {
             compress.GUnzip();
         }
 
-        internal static void EncryptText()
+        internal static void EncryptTextMenu()
         {
             encryptAES.Encrypt();
         }
 
-        internal static void DecryptText()
+        internal static void DecryptTextMenu()
         {
             encryptAES.Decrypt();
         }
 
-        internal static void Settings()
+        internal static void SettingsMenu()
         {
-            using (SettingsDlg settingsDlg = new SettingsDlg(settings))
+            using (SettingsDlg settingsDlg = new SettingsDlg())
             {
-                settingsDlg.ShowDialog();
+                var result = settingsDlg.ShowDialog();
+
+                if (result == DialogResult.OK)
+                {
+                    Settings = settingsDlg.Settings;
+                }
             }
         }
 
-        private static void ShowAbout()
+        private static void ShowAboutMenu()
         {
             #region Old version
             //var message = new StringBuilder();
