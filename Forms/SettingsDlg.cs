@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Security.Cryptography;
 using System.Linq;
 using System.Text;
@@ -53,6 +54,7 @@ namespace GZipTools.Forms
             // Create a new key
             var key = Aes.Create().Key;
             textBoxKeyValue.Text = Convert.ToBase64String(key);
+            lblKeyAction.Visible = false;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -74,6 +76,10 @@ namespace GZipTools.Forms
                 // Add key to combobox
                 comboBoxSelectKey.Items.Add(key);
                 comboBoxSelectKey.SelectedItem = key;
+
+                lblKeyAction.Visible = true;
+                lblKeyAction.Text = "Added";
+                lblKeyAction.ForeColor = Color.Blue;
             }
             else
             {
@@ -83,16 +89,21 @@ namespace GZipTools.Forms
                 Model.Key comboKey = (Model.Key)comboBoxSelectKey.Items[index];
                 comboKey.Value = textBoxKeyValue.Text;
                 comboBoxSelectKey.SelectedItem = comboKey;
+
+                lblKeyAction.Visible = true;
+                lblKeyAction.Text = "Updated";
+                lblKeyAction.ForeColor = Color.Green;
             }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-
+            lblKeyAction.Visible = false;
         }
 
         private void comboBoxSelectKey_SelectedIndexChanged(object sender, EventArgs e)
         {
+            lblKeyAction.Visible = false;
             Model.Key selectedItem = (Model.Key)comboBoxSelectKey.SelectedItem;
             textBoxKeyID.Text = selectedItem.Name;
             textBoxKeyValue.Text = selectedItem.Value;

@@ -35,7 +35,6 @@ namespace GZipTools.Forms
             this.lblSelectKey = new System.Windows.Forms.Label();
             this.lblKeyID = new System.Windows.Forms.Label();
             this.lblKeyValue = new System.Windows.Forms.Label();
-            this.textBoxKeyID = new System.Windows.Forms.TextBox();
             this.comboBoxSelectKey = new System.Windows.Forms.ComboBox();
             this.textBoxKeyValue = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -45,10 +44,14 @@ namespace GZipTools.Forms
             this.lblTitle = new System.Windows.Forms.Label();
             this.buttonOK = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.textBoxKeyID = new System.Windows.Forms.TextBox();
+            this.lblKeyAction = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.AESPage.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -79,11 +82,11 @@ namespace GZipTools.Forms
             this.tableLayoutPanel1.Controls.Add(this.lblSelectKey, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.lblKeyID, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.lblKeyValue, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.textBoxKeyID, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.comboBoxSelectKey, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.textBoxKeyValue, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.lblTitle, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel2, 1, 2);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 6);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 6;
@@ -125,14 +128,6 @@ namespace GZipTools.Forms
             this.lblKeyValue.Size = new System.Drawing.Size(55, 13);
             this.lblKeyValue.TabIndex = 2;
             this.lblKeyValue.Text = "Key Value";
-            // 
-            // textBoxKeyID
-            // 
-            this.textBoxKeyID.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBoxKeyID.Location = new System.Drawing.Point(92, 75);
-            this.textBoxKeyID.Name = "textBoxKeyID";
-            this.textBoxKeyID.Size = new System.Drawing.Size(327, 20);
-            this.textBoxKeyID.TabIndex = 3;
             // 
             // comboBoxSelectKey
             // 
@@ -228,6 +223,35 @@ namespace GZipTools.Forms
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.lblKeyAction);
+            this.panel2.Controls.Add(this.textBoxKeyID);
+            this.panel2.Location = new System.Drawing.Point(92, 73);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(508, 24);
+            this.panel2.TabIndex = 9;
+            // 
+            // textBoxKeyID
+            // 
+            this.textBoxKeyID.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.textBoxKeyID.Location = new System.Drawing.Point(0, 2);
+            this.textBoxKeyID.Name = "textBoxKeyID";
+            this.textBoxKeyID.Size = new System.Drawing.Size(327, 20);
+            this.textBoxKeyID.TabIndex = 9;
+            // 
+            // lblKeyAction
+            // 
+            this.lblKeyAction.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lblKeyAction.AutoSize = true;
+            this.lblKeyAction.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblKeyAction.Location = new System.Drawing.Point(333, 5);
+            this.lblKeyAction.Name = "lblKeyAction";
+            this.lblKeyAction.Size = new System.Drawing.Size(55, 13);
+            this.lblKeyAction.TabIndex = 10;
+            this.lblKeyAction.Text = "Updated";
+            this.lblKeyAction.Visible = false;
+            // 
             // SettingsDlg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -249,6 +273,8 @@ namespace GZipTools.Forms
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -263,7 +289,6 @@ namespace GZipTools.Forms
         private System.Windows.Forms.Label lblSelectKey;
         private System.Windows.Forms.Label lblKeyID;
         private System.Windows.Forms.Label lblKeyValue;
-        private System.Windows.Forms.TextBox textBoxKeyID;
         private System.Windows.Forms.ComboBox comboBoxSelectKey;
         private System.Windows.Forms.TextBox textBoxKeyValue;
         private System.Windows.Forms.Panel panel1;
@@ -271,5 +296,8 @@ namespace GZipTools.Forms
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnGenerate;
         private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.TextBox textBoxKeyID;
+        private System.Windows.Forms.Label lblKeyAction;
     }
 }
