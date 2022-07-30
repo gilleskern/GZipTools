@@ -2,6 +2,7 @@
 using GZipTools.Forms;
 using Model = GZipTools.Model;
 using Helper = GZipTools.Helper;
+using Constants = GZipTools.Helper.Constants;
 using Kbg.NppPluginNET.PluginInfrastructure;
 using System.Windows.Forms;
 
@@ -9,12 +10,12 @@ namespace Kbg.NppPluginNET
 {
     class Main
     {
-        internal const string PluginName = Helper.Constants.Plugin.Name;
+        internal const string PluginName = Constants.Plugin.Name;
 
         private static Compress compress = new Compress(new ScintillaGateway(PluginBase.GetCurrentScintilla()));
         private static EncryptAES encryptAES = new EncryptAES(new ScintillaGateway(PluginBase.GetCurrentScintilla()));
         private static Model.Settings _settings = null;
-        private static Model.Settings Settings
+        protected static Model.Settings Settings
         {
             get
             {
@@ -79,12 +80,34 @@ namespace Kbg.NppPluginNET
 
         internal static void EncryptTextMenu()
         {
-            encryptAES.Encrypt();
+            if (Settings == null)
+            {
+                MessageBox.Show(Constants.MessageBox.Text.SettingsFromMenu, Constants.MessageBox.Caption.SettingsNotFound, MessageBoxButtons.OK);
+            }
+            else if (Settings.AES.SelectedKey == null)
+            {
+                MessageBox.Show(Constants.MessageBox.Text.SelectKey, Constants.MessageBox.Caption.KeyNotFound, MessageBoxButtons.OK);
+            }
+            else
+            {
+                encryptAES.Encrypt(Settings.AES.SelectedKey.Value);
+            }
         }
 
         internal static void DecryptTextMenu()
         {
-            encryptAES.Decrypt();
+            if (Settings == null)
+            {
+                MessageBox.Show(Constants.MessageBox.Text.SettingsFromMenu, Constants.MessageBox.Caption.SettingsNotFound, MessageBoxButtons.OK);
+            }
+            else if (Settings.AES.SelectedKey == null)
+            {
+                MessageBox.Show(Constants.MessageBox.Text.SelectKey, Constants.MessageBox.Caption.KeyNotFound, MessageBoxButtons.OK);
+            }
+            else
+            {
+                encryptAES.Decrypt(Settings.AES.SelectedKey.Value);
+            }
         }
 
         internal static void SettingsMenu()

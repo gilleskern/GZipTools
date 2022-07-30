@@ -12,5 +12,20 @@ namespace GZipTools.Helper
         {
             public const string Name = "GZipTools";
         }
+
+        public struct MessageBox
+        {
+            public struct Caption
+            {
+                public const string SettingsNotFound = "Settings not found";
+                public const string KeyNotFound = "No key selected";
+            }
+
+            public struct Text
+            {
+                public const string SettingsFromMenu = "Please add settings from menu";
+                public const string SelectKey = "Please select key from settings";
+            }
+        }
     }
 }

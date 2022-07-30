@@ -11,14 +11,13 @@ namespace GZipTools
         private readonly IScintillaGateway scintilla;
         private byte[] IV = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 };
         private int BlockSize = 128;
-        private string Password = "MY_Password";
 
         public EncryptAES(IScintillaGateway scintilla)
         {
             this.scintilla = scintilla;
         }
 
-        public void Encrypt()
+        public void Encrypt(string key)
         {
             try
             {
@@ -30,7 +29,7 @@ namespace GZipTools
                 string text = scintilla.GetText(length + 1);
 
                 // Uncompress text
-                string encryptedText = EncryptString(text);
+                string encryptedText = EncryptString(text, key);
 
                 // Delete all text in the document.
                 scintilla.ClearAll();
@@ -50,7 +49,7 @@ namespace GZipTools
             }
         }
 
-        public void Decrypt()
+        public void Decrypt(string key)
         {
             try
             {
@@ -62,7 +61,7 @@ namespace GZipTools
                 string encryptedText = scintilla.GetText(length + 1);
 
                 // Uncompress text
-                string text = DecryptString(encryptedText);
+                string text = DecryptString(encryptedText, key);
 
                 // Delete all text in the document.
                 scintilla.ClearAll();
@@ -83,15 +82,15 @@ namespace GZipTools
         }
 
         // Reference: https://www.codeproject.com/Articles/1278566/Simple-AES-Encryption-using-Csharp
-        private string EncryptString(string text)
+        private string EncryptString(string text, string key)
         {
             if (text == "") return string.Empty;
             byte[] bytes = Encoding.UTF8.GetBytes(text);
             //Encrypt
             SymmetricAlgorithm crypt = Aes.Create();
-            HashAlgorithm hash = MD5.Create();
             crypt.BlockSize = BlockSize;
-            crypt.Key = hash.ComputeHash(Encoding.UTF8.GetBytes(Password));
+            var cryptKey = Encoding.UTF32.GetBytes(key);
+            crypt.Key = Encoding.UTF8.GetBytes(key);
             crypt.IV = IV;
 
             using (MemoryStream memoryStream = new MemoryStream())
@@ -105,14 +104,13 @@ namespace GZipTools
             }
         }
 
-        private string DecryptString(string text)
+        private string DecryptString(string text, string key)
         {
             if (text == "") return string.Empty;
             //Decrypt
             byte[] bytes = Convert.FromBase64String(text);
             SymmetricAlgorithm crypt = Aes.Create();
-            HashAlgorithm hash = MD5.Create();
-            crypt.Key = hash.ComputeHash(Encoding.UTF8.GetBytes(Password));
+            crypt.Key = Encoding.UTF8.GetBytes(key);
             crypt.IV = IV;
 
             using (MemoryStream memoryStream = new MemoryStream(bytes))
