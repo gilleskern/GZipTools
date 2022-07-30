@@ -38,7 +38,7 @@ namespace GZipTools.Forms
                 };
             }
 
-            // To Do: Initialise controls
+            // Initialise controls
             comboBoxSelectKey.Items.AddRange(_settings.AES.Keys.ToArray());
             comboBoxSelectKey.SelectedItem = _settings.AES.Keys.FirstOrDefault(k => k.Name == _settings.AES.SelectedKey.Name);
 
@@ -99,6 +99,33 @@ namespace GZipTools.Forms
         private void btnDelete_Click(object sender, EventArgs e)
         {
             lblKeyAction.Visible = false;
+
+            // 1) Get selected item
+            Model.Key selectedItem = (Model.Key)comboBoxSelectKey.SelectedItem;
+            var key = _settings.AES.Keys.FirstOrDefault(k => k.Name == selectedItem.Name);
+
+            if (key != null)
+            {
+                // 2) Remove key from settings
+                _settings.AES.Keys.Remove(key);
+
+                // 3) Update dialog
+                comboBoxSelectKey.Items.Remove(key);
+
+                if (comboBoxSelectKey.Items.Count == 0)
+                {
+                    textBoxKeyID.Text = string.Empty;
+                    textBoxKeyValue.Text = string.Empty;
+                    comboBoxSelectKey.Text = string.Empty;
+                    comboBoxSelectKey.SelectedItem = null;
+                    _settings.AES.SelectedKey = null;
+                }
+                else
+                {
+                    Model.Key prevKey = (Model.Key)comboBoxSelectKey.Items[0];
+                    comboBoxSelectKey.SelectedItem = prevKey;
+                }
+            }
         }
 
         private void comboBoxSelectKey_SelectedIndexChanged(object sender, EventArgs e)

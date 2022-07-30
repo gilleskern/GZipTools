@@ -42,11 +42,11 @@ namespace GZipTools.Forms
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnGenerate = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lblKeyAction = new System.Windows.Forms.Label();
+            this.textBoxKeyID = new System.Windows.Forms.TextBox();
             this.buttonOK = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.textBoxKeyID = new System.Windows.Forms.TextBox();
-            this.lblKeyAction = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.AESPage.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -133,6 +133,7 @@ namespace GZipTools.Forms
             // 
             this.comboBoxSelectKey.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.comboBoxSelectKey.DisplayMember = "Name";
+            this.comboBoxSelectKey.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxSelectKey.FormattingEnabled = true;
             this.comboBoxSelectKey.Location = new System.Drawing.Point(92, 44);
             this.comboBoxSelectKey.Name = "comboBoxSelectKey";
@@ -203,6 +204,35 @@ namespace GZipTools.Forms
             this.lblTitle.TabIndex = 7;
             this.lblTitle.Text = "Manage Keys";
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.lblKeyAction);
+            this.panel2.Controls.Add(this.textBoxKeyID);
+            this.panel2.Location = new System.Drawing.Point(92, 73);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(508, 24);
+            this.panel2.TabIndex = 9;
+            // 
+            // lblKeyAction
+            // 
+            this.lblKeyAction.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lblKeyAction.AutoSize = true;
+            this.lblKeyAction.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblKeyAction.Location = new System.Drawing.Point(333, 5);
+            this.lblKeyAction.Name = "lblKeyAction";
+            this.lblKeyAction.Size = new System.Drawing.Size(55, 13);
+            this.lblKeyAction.TabIndex = 10;
+            this.lblKeyAction.Text = "Updated";
+            this.lblKeyAction.Visible = false;
+            // 
+            // textBoxKeyID
+            // 
+            this.textBoxKeyID.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.textBoxKeyID.Location = new System.Drawing.Point(0, 2);
+            this.textBoxKeyID.Name = "textBoxKeyID";
+            this.textBoxKeyID.Size = new System.Drawing.Size(327, 20);
+            this.textBoxKeyID.TabIndex = 9;
+            // 
             // buttonOK
             // 
             this.buttonOK.Location = new System.Drawing.Point(458, 571);
@@ -222,35 +252,6 @@ namespace GZipTools.Forms
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.lblKeyAction);
-            this.panel2.Controls.Add(this.textBoxKeyID);
-            this.panel2.Location = new System.Drawing.Point(92, 73);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(508, 24);
-            this.panel2.TabIndex = 9;
-            // 
-            // textBoxKeyID
-            // 
-            this.textBoxKeyID.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBoxKeyID.Location = new System.Drawing.Point(0, 2);
-            this.textBoxKeyID.Name = "textBoxKeyID";
-            this.textBoxKeyID.Size = new System.Drawing.Size(327, 20);
-            this.textBoxKeyID.TabIndex = 9;
-            // 
-            // lblKeyAction
-            // 
-            this.lblKeyAction.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lblKeyAction.AutoSize = true;
-            this.lblKeyAction.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblKeyAction.Location = new System.Drawing.Point(333, 5);
-            this.lblKeyAction.Name = "lblKeyAction";
-            this.lblKeyAction.Size = new System.Drawing.Size(55, 13);
-            this.lblKeyAction.TabIndex = 10;
-            this.lblKeyAction.Text = "Updated";
-            this.lblKeyAction.Visible = false;
             // 
             // SettingsDlg
             // 
