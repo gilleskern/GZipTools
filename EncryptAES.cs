@@ -89,8 +89,7 @@ namespace GZipTools
             //Encrypt
             SymmetricAlgorithm crypt = Aes.Create();
             crypt.BlockSize = BlockSize;
-            var cryptKey = Encoding.UTF32.GetBytes(key);
-            crypt.Key = Encoding.UTF8.GetBytes(key);
+            crypt.Key = Convert.FromBase64String(key);
             crypt.IV = IV;
 
             using (MemoryStream memoryStream = new MemoryStream())
@@ -110,7 +109,7 @@ namespace GZipTools
             //Decrypt
             byte[] bytes = Convert.FromBase64String(text);
             SymmetricAlgorithm crypt = Aes.Create();
-            crypt.Key = Encoding.UTF8.GetBytes(key);
+            crypt.Key = Convert.FromBase64String(key);
             crypt.IV = IV;
 
             using (MemoryStream memoryStream = new MemoryStream(bytes))
