@@ -1,15 +1,37 @@
 ﻿using GZipTools;
+using GZipTools.Forms;
+using Model = GZipTools.Model;
+using Helper = GZipTools.Helper;
+using Constants = GZipTools.Helper.Constants;
 using Kbg.NppPluginNET.PluginInfrastructure;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Kbg.NppPluginNET
 {
     class Main
     {
-        internal const string PluginName = "GZipTools";
+        internal const string PluginName = Constants.Plugin.Name;
 
         private static Compress compress = new Compress(new ScintillaGateway(PluginBase.GetCurrentScintilla()));
+        private static EncryptAES encryptAES = new EncryptAES(new ScintillaGateway(PluginBase.GetCurrentScintilla()));
+        private static Model.Settings _settings = null;
+        protected static Model.Settings Settings
+        {
+            get
+            {
+                if (_settings == null)
+                {
+                    _settings = Helper.Settings.Read();
+                }
+
+                return _settings;
+            }
+
+            set
+            {
+                _settings = value;
+            }
+        }
 
         public static void OnNotification(ScNotification notification)
         {  
@@ -25,10 +47,15 @@ namespace Kbg.NppPluginNET
 
         internal static void CommandMenuInit()
         {
-            PluginBase.SetCommand(0, "Compress text", CompressText, new ShortcutKey(true, false, true, Keys.C));
-            PluginBase.SetCommand(1, "Decompress text", UncompressText, new ShortcutKey(true, false, true, Keys.D));
+            PluginBase.SetCommand(0, "Compress text", CompressTextMenu, new ShortcutKey(true, false, true, Keys.C));
+            PluginBase.SetCommand(1, "Decompress text", UncompressTextMenu, new ShortcutKey(true, false, true, Keys.D));
             PluginBase.SetCommand(2, string.Empty, null); // Add separator
-            PluginBase.SetCommand(3, "&About " + PluginName, ShowAbout, new ShortcutKey(false, false, false, Keys.None));
+            PluginBase.SetCommand(3, "Encrypt text", EncryptTextMenu, new ShortcutKey(false, false, false, Keys.None));
+            PluginBase.SetCommand(4, "Decrypt text", DecryptTextMenu, new ShortcutKey(false, false, false, Keys.None));
+            PluginBase.SetCommand(5, string.Empty, null); // Add separator
+            PluginBase.SetCommand(6, "Settings...", SettingsMenu, new ShortcutKey(false, false, false, Keys.None));
+            PluginBase.SetCommand(7, string.Empty, null); // Add separator
+            PluginBase.SetCommand(8, "&About " + PluginName, ShowAboutMenu, new ShortcutKey(false, false, false, Keys.None));
         }
 
         internal static void SetToolBarIcon()
@@ -41,17 +68,62 @@ namespace Kbg.NppPluginNET
 
         }
 
-        internal static void CompressText()
+        internal static void CompressTextMenu()
         {
             compress.GZip();
         }
 
-        internal static void UncompressText()
+        internal static void UncompressTextMenu()
         {
             compress.GUnzip();
         }
 
-        private static void ShowAbout()
+        internal static void EncryptTextMenu()
+        {
+            if (Settings == null)
+            {
+                MessageBox.Show(Constants.MessageBox.Text.SettingsFromMenu, Constants.MessageBox.Caption.SettingsNotFound, MessageBoxButtons.OK);
+            }
+            else if (Settings.AES.SelectedKey == null)
+            {
+                MessageBox.Show(Constants.MessageBox.Text.SelectKey, Constants.MessageBox.Caption.KeyNotFound, MessageBoxButtons.OK);
+            }
+            else
+            {
+                encryptAES.Encrypt(Settings.AES.SelectedKey.Value);
+            }
+        }
+
+        internal static void DecryptTextMenu()
+        {
+            if (Settings == null)
+            {
+                MessageBox.Show(Constants.MessageBox.Text.SettingsFromMenu, Constants.MessageBox.Caption.SettingsNotFound, MessageBoxButtons.OK);
+            }
+            else if (Settings.AES.SelectedKey == null)
+            {
+                MessageBox.Show(Constants.MessageBox.Text.SelectKey, Constants.MessageBox.Caption.KeyNotFound, MessageBoxButtons.OK);
+            }
+            else
+            {
+                encryptAES.Decrypt(Settings.AES.SelectedKey.Value);
+            }
+        }
+
+        internal static void SettingsMenu()
+        {
+            using (SettingsDlg settingsDlg = new SettingsDlg())
+            {
+                var result = settingsDlg.ShowDialog();
+
+                if (result == DialogResult.OK)
+                {
+                    Settings = settingsDlg.Settings;
+                }
+            }
+        }
+
+        private static void ShowAboutMenu()
         {
             #region Old version
             //var message = new StringBuilder();
