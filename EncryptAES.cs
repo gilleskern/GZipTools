@@ -37,9 +37,9 @@ namespace GZipTools
                 // Display compressed text
                 scintilla.SetText(encryptedText);
             }
-            catch (Exception ex)
+            catch
             {
-                string error = ex.Message;
+                string error = "Error while encrypting message.";
 
                 scintilla.SetText(error);
             }
@@ -69,9 +69,9 @@ namespace GZipTools
                 // Display compressed text
                 scintilla.SetText(text);
             }
-            catch (Exception ex)
+            catch
             {
-                string error = ex.Message;
+                string error = "Error while decrypting message.";
 
                 scintilla.SetText(error);
             }
