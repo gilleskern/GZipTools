@@ -16,7 +16,8 @@ Dependencies: https://www.manuelmeyer.net/2016/01/net-power-tip-10-merging-assem
 ## Versions
 
 1.0.0 - Initial build (Feb 2022)\
-1.0.1 - Add About Dialog (Jun 2022)
+1.0.1 - Add About Dialog (Jun 2022)\
+1.0.2 - Add AES encryption & Settings Dialog (Jul 2022)
 
 ## Other plugins using this pluginpack
 
