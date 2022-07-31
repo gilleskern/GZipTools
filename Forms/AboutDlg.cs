@@ -9,9 +9,13 @@ namespace Kbg.NppPluginNET
 {
     public partial class AboutDlg : Form
     {
+        private string Version = "1.02";    // Add encryption & settings
+
         public AboutDlg()
         {
             InitializeComponent();
+
+            AboutBox.Text += Version;
         }
 
         private void CloseButton_Click(object sender, EventArgs e)

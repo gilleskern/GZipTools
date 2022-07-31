@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Drawing;
-using System.Security.Cryptography;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 using System.Collections.Generic;
-using Constants = GZipTools.Helper.Constants;
+using System.Drawing;
+using System.Linq;
+using System.Security.Cryptography;
+using System.Windows.Forms;
 
 namespace GZipTools.Forms
 {
@@ -84,6 +82,9 @@ namespace GZipTools.Forms
             }
             else
             {
+                //var update = MessageBox.Show(Constants.MessageBox.Text.AreYouSure, Constants.MessageBox.Caption.UpdateKey, MessageBoxButtons.YesNo);
+                //if(update == DialogResult.Yes)
+
                 // 3) update existing key
                 int index = comboBoxSelectKey.Items.IndexOf(key);
 
@@ -93,7 +94,7 @@ namespace GZipTools.Forms
 
                 lblKeyAction.Visible = true;
                 lblKeyAction.Text = "Updated";
-                lblKeyAction.ForeColor = Color.Green;
+                lblKeyAction.ForeColor = Color.Green; 
             }
         }
 
@@ -101,35 +102,33 @@ namespace GZipTools.Forms
         {
             lblKeyAction.Visible = false;
 
-            var delete = MessageBox.Show(Constants.MessageBox.Text.AreYouSure, Constants.MessageBox.Caption.DeleteKey, MessageBoxButtons.YesNo);
+            //var delete = MessageBox.Show(Constants.MessageBox.Text.AreYouSure, Constants.MessageBox.Caption.DeleteKey, MessageBoxButtons.YesNo);
+            //if (delete == DialogResult.Yes)
 
-            if (delete == DialogResult.Yes)
-            { 
-                // 1) Get selected item
-                Model.Key selectedItem = (Model.Key)comboBoxSelectKey.SelectedItem;
-                var key = _settings.AES.Keys.FirstOrDefault(k => k.Name == selectedItem.Name);
+            // 1) Get selected item
+            Model.Key selectedItem = (Model.Key)comboBoxSelectKey.SelectedItem;
+            var key = _settings.AES.Keys.FirstOrDefault(k => k.Name == selectedItem.Name);
 
-                if (key != null)
+            if (key != null)
+            {
+                // 2) Remove key from settings
+                _settings.AES.Keys.Remove(key);
+
+                // 3) Update dialog
+                comboBoxSelectKey.Items.Remove(key);
+
+                if (comboBoxSelectKey.Items.Count == 0)
                 {
-                    // 2) Remove key from settings
-                    _settings.AES.Keys.Remove(key);
-
-                    // 3) Update dialog
-                    comboBoxSelectKey.Items.Remove(key);
-
-                    if (comboBoxSelectKey.Items.Count == 0)
-                    {
-                        textBoxKeyID.Text = string.Empty;
-                        textBoxKeyValue.Text = string.Empty;
-                        comboBoxSelectKey.Text = string.Empty;
-                        comboBoxSelectKey.SelectedItem = null;
-                        _settings.AES.SelectedKey = null;
-                    }
-                    else
-                    {
-                        Model.Key prevKey = (Model.Key)comboBoxSelectKey.Items[0];
-                        comboBoxSelectKey.SelectedItem = prevKey;
-                    }
+                    textBoxKeyID.Text = string.Empty;
+                    textBoxKeyValue.Text = string.Empty;
+                    comboBoxSelectKey.Text = string.Empty;
+                    comboBoxSelectKey.SelectedItem = null;
+                    _settings.AES.SelectedKey = null;
+                }
+                else
+                {
+                    Model.Key prevKey = (Model.Key)comboBoxSelectKey.Items[0];
+                    comboBoxSelectKey.SelectedItem = prevKey;
                 }
             }
         }
