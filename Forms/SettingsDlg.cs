@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using Constants = GZipTools.Helper.Constants;
 
 namespace GZipTools.Forms
 {
@@ -100,30 +101,35 @@ namespace GZipTools.Forms
         {
             lblKeyAction.Visible = false;
 
-            // 1) Get selected item
-            Model.Key selectedItem = (Model.Key)comboBoxSelectKey.SelectedItem;
-            var key = _settings.AES.Keys.FirstOrDefault(k => k.Name == selectedItem.Name);
+            var delete = MessageBox.Show(Constants.MessageBox.Text.AreYouSure, Constants.MessageBox.Caption.DeleteKey, MessageBoxButtons.YesNo);
 
-            if (key != null)
-            {
-                // 2) Remove key from settings
-                _settings.AES.Keys.Remove(key);
+            if (delete == DialogResult.Yes)
+            { 
+                // 1) Get selected item
+                Model.Key selectedItem = (Model.Key)comboBoxSelectKey.SelectedItem;
+                var key = _settings.AES.Keys.FirstOrDefault(k => k.Name == selectedItem.Name);
 
-                // 3) Update dialog
-                comboBoxSelectKey.Items.Remove(key);
-
-                if (comboBoxSelectKey.Items.Count == 0)
+                if (key != null)
                 {
-                    textBoxKeyID.Text = string.Empty;
-                    textBoxKeyValue.Text = string.Empty;
-                    comboBoxSelectKey.Text = string.Empty;
-                    comboBoxSelectKey.SelectedItem = null;
-                    _settings.AES.SelectedKey = null;
-                }
-                else
-                {
-                    Model.Key prevKey = (Model.Key)comboBoxSelectKey.Items[0];
-                    comboBoxSelectKey.SelectedItem = prevKey;
+                    // 2) Remove key from settings
+                    _settings.AES.Keys.Remove(key);
+
+                    // 3) Update dialog
+                    comboBoxSelectKey.Items.Remove(key);
+
+                    if (comboBoxSelectKey.Items.Count == 0)
+                    {
+                        textBoxKeyID.Text = string.Empty;
+                        textBoxKeyValue.Text = string.Empty;
+                        comboBoxSelectKey.Text = string.Empty;
+                        comboBoxSelectKey.SelectedItem = null;
+                        _settings.AES.SelectedKey = null;
+                    }
+                    else
+                    {
+                        Model.Key prevKey = (Model.Key)comboBoxSelectKey.Items[0];
+                        comboBoxSelectKey.SelectedItem = prevKey;
+                    }
                 }
             }
         }

@@ -19,12 +19,14 @@ namespace GZipTools.Helper
             {
                 public const string SettingsNotFound = "Settings not found";
                 public const string KeyNotFound = "No key selected";
+                public const string DeleteKey = "Delete key";
             }
 
             public struct Text
             {
                 public const string SettingsFromMenu = "Please add settings from menu";
                 public const string SelectKey = "Please select key from settings";
+                public const string AreYouSure = "Are you sure?";
             }
         }
     }
